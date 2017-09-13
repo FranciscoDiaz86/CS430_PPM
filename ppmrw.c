@@ -57,6 +57,9 @@ int P3_converstion(FILE *input, FILE *output){
 
   //Getting max color value
   fgets(temp_data, 255, input);
+  if(strcmp(temp_data, "255") != 0){
+    printf("The file is not RGB. You need to use a RGB file.");
+  }  
   fprintf(output, "%s", temp_data);
   
   //Allocating memory for the image data
@@ -122,6 +125,9 @@ int P6_converstion(FILE *input, FILE *output){
 
   //Getting max color value
   fgets(temp_data, 255, input);
+  if(strcmp(temp_data, "255") != 0){
+    printf("The file is not RGB. You need to use a RGB file.");
+  }
   fprintf(output, "%s", temp_data);
 
   //Allocating memory for the image data
@@ -160,6 +166,7 @@ int main (int argc, char *argv[]){
   //Checking to see if the files opened without a problem
   if(input_file == NULL){
     printf("Error opening the input file\n");
+    return 1;
   }
 
   //Calls the correct file converstion function
